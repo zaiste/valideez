@@ -4,9 +4,9 @@ class PeselValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     @message = options[:message] || "invalid format"
-    options.delete(:message)
+    opts = options.reject{ |k| k == :message }
 
-    record.errors.add(attribute,  @message) unless Valideez::Pesel.new(value, options).valid?
+    record.errors.add(attribute,  @message) unless Valideez::Pesel.new(value, opts).valid?
   end
 end
 

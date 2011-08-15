@@ -6,7 +6,7 @@ class PeselBastard
   include ActiveModel::Validations
 
   attr_accessor :pesel
-  validates :pesel, :presence => true, :pesel => true
+  validates :pesel, :presence => true, :pesel => { age: 18 }
 end
 
 describe PeselValidator do
@@ -23,6 +23,12 @@ describe PeselValidator do
   it "should be invalid" do
     @model.should_not be_valid 
     @model.pesel = '69041979693' 
+    @model.should_not be_valid
+  end
+
+  it "should be invalid with valid PESEL but too young" do
+    @model.should_not be_valid 
+    @model.pesel = '99030251335' 
     @model.should_not be_valid
   end
 end
