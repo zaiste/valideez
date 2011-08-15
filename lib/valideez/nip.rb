@@ -6,11 +6,11 @@ module Valideez
       super val
 
       assign({ 
-        :sum_control => true,
         :format => /\A\d{10}\Z/, 
         :length => 10,
         :mask => [6, 5, 7, 2, 3, 4, 5, 6, 7],
         :modulo => 11,
+        :sum_control => true,
       }.merge(options))
 
       @arr = []
