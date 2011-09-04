@@ -47,11 +47,11 @@ module Valideez
       y, m, d = sample.scan(/../)
 
       year = %w(19 20 21 22)[m[0].to_i / 2].to_s + y
-      month = (m.to_i - m[0].to_i * 10).to_s
+
+      month = (m.to_i - (m[0].to_i / 2 ) * 2 * 10).to_s # It's divided as integer here!
 
       Date.parse [year, month, d].join("-")
     end
-
   end
 
 end

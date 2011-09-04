@@ -14,7 +14,7 @@ describe Valideez::Pesel  do
   end
 
   it "should be valid with minimum age defined" do
-    %w[49040501580].each do |n|
+    %w[49040501580 10101341234].each do |n|
       Valideez::Pesel.new(n, :age => 18).should be_valid
     end
 
