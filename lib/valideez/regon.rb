@@ -6,7 +6,6 @@ module Valideez
       super val
 
       assign({ 
-        #:format => /\A\d{9}\d{5}*\Z/,
         :format => /\A(\d{9}|\d{14})\Z/,
         :length => [9, 14],
         :mask => [8, 9, 2, 3, 4, 5, 6, 7],
