@@ -5,7 +5,9 @@ module Valideez
     end
 
     def validate_length
-      length == val.size
+      # length can be a Fixnum or Array of Fixnums
+      lengths = length.kind_of?(Array) ? length : [length]
+      lengths.include? val.size
     end
 
   end
