@@ -5,16 +5,20 @@ module Valideez
 
     def initialize(val)
       @val = val.to_s.gsub(/-/, '')
+      # array of methods used to validate
       @validable = []
     end
 
     def valid?
+      # p - Array of methods (Strings) which can be used for validation
       p = validable.select{ |var| respond_to?("validate_#{var.to_s}", true) }
+      # execute validations, stop and return false if current validations return false
       p.take_while { |var| send("validate_#{var.to_s}") }.size == p.size
     end
 
     private
 
+    # Dynamically assign instance variables using opts Hash
     def assign(opts)
       opts.each do |attr, val|
         # tricky: don't create an instance variable if 
