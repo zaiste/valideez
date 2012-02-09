@@ -4,8 +4,7 @@ module Valideez
     attr_accessor :validable
 
     def initialize(val)
-      @val = val.to_s.gsub(/-/, '')
-      # array of methods used to validate
+      @val = val.to_s.gsub(/-/, '').gsub(/\s+/, '')
       @validable = []
     end
 
